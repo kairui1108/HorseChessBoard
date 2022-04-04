@@ -10,6 +10,8 @@ import java.util.Comparator;
  * @ version 1.0
  *  《马踏棋盘》 -- 贪心算法优化
  */
+@SuppressWarnings("all")
+
 public class HorseChessBoardImprove {
 
     //棋盘大小
