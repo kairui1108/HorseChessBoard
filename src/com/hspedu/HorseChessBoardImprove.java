@@ -2,14 +2,15 @@ package com.hspedu;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * @ author  tanruikai
  * @ date  2022/4/4 14:01
  * @ version 1.0
- *  《马踏棋盘》
+ *  《马踏棋盘》 -- 贪心算法优化
  */
-public class HorseChessBoard {
+public class HorseChessBoardImprove {
 
     //棋盘大小
     private static int X = 6; // col
@@ -48,7 +49,7 @@ public class HorseChessBoard {
         visited[row * X + col] = true;
         //获取当前位置可以走的下一个位置有哪些
         ArrayList<Point> ps = next(new Point(col, row)); //col - X , row - Y\
-
+        sort(ps);
         //遍历
         while (!ps.isEmpty()) {
             // 取出一个位置
@@ -66,6 +67,15 @@ public class HorseChessBoard {
         } else {
             finished = true;
         }
+    }
+
+    public static void sort(ArrayList<Point> ps) {
+        ps.sort(new Comparator<Point>() {
+            @Override
+            public int compare(Point o1, Point o2) {
+                return next(o1).size() - next(o2).size();
+            }
+        });
     }
 
 
